@@ -1,0 +1,39 @@
+@using StoreApp.Models;
+
+@model List<Product>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td><a href="get/@item.Id">Details</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+
+</html>
