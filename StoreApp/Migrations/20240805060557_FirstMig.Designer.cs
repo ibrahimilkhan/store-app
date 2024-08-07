@@ -11,7 +11,7 @@ namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
     [Migration("20240805060557_init")]
-    partial class init
+    partial class FirstMig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
