@@ -13,10 +13,10 @@ namespace StoreApp.Controllers
             _repositoryManager = repositoryManager;
         }
         // GET: CategoryController
-        public IEnumerable<Category> Index()
+        public IActionResult Index()
         {
             var models = _repositoryManager.CategoryRepository.FindAll(false);
-            return models;
+            return View(models);
         }
 
     }

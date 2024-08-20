@@ -1,5 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<Category>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Categories</h2>
+
+           <div class="d-flex justify-content-center">
+            <ul class="list-group w-50">
+                @foreach (var category in Model)
+                {
+                    <li class="list-group-item">@category.Name</li>
+                }
+            </ul>
+        </div>
+</div>
