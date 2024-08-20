@@ -13,13 +13,13 @@ public class ProductController : Controller
 
     public IActionResult Index()
     {
-        var model = _manager.Product.GetAllProducts(false).ToList();
+        var model = _manager.ProductRepository.GetAllProducts(false).ToList();
         return View(model);
     }
 
     public IActionResult Get(int id)
     {
-        var product = _manager.Product.GetOneProduct(id, false);
+        var product = _manager.ProductRepository.GetOneProduct(id, false);
         return View(product);
     }
 }
