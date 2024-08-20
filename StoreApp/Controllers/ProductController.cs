@@ -19,7 +19,7 @@ public class ProductController : Controller
 
     public IActionResult Get(int id)
     {
-        // var model = _context.Products.FirstOrDefault(x => x.Id == id);
-        throw new NotImplementedException();
+        var product = _manager.Product.GetOneProduct(id, false);
+        return View(product);
     }
 }
