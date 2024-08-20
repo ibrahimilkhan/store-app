@@ -3,15 +3,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StoreApp.Models;
+using Repositories;
 
 #nullable disable
 
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240805060557_init")]
-    partial class FirstMig
+    [Migration("20240807082509_initial")]
+    partial class firstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,7 +19,7 @@ namespace StoreApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.7");
 
-            modelBuilder.Entity("StoreApp.Models.Product", b =>
+            modelBuilder.Entity("Entities.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,6 +34,32 @@ namespace StoreApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Computer",
+                            Price = 27000m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Keyboard",
+                            Price = 2700m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Mouse",
+                            Price = 990m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Monitor",
+                            Price = 6900m
+                        });
                 });
 #pragma warning restore 612, 618
         }

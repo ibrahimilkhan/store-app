@@ -1,14 +1,19 @@
 using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
-using StoreApp.Models;
+using Repositories;
+using Repositories.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
-    options.UseSqlite(builder.Configuration.GetConnectionString("connectionForPc"));
+    options.UseSqlite(builder.Configuration.GetConnectionString("connectionForPc"),
+    b => b.MigrationsAssembly("StoreApp"));
 });
+
+
+builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
