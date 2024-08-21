@@ -5,20 +5,23 @@
         Only for Product Home Page Header
     </div>
 }
-<div class="container">
-    <div class="row">
-        @foreach (var item in @Model)
-        {
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
-                <partial name="_ProductCard" model="@item" />
-            </div>
-
-        }
-    </div>
-</div>
 
 @section Footer {
     <div>
         Only for Product Home Page Footer
     </div>
 }
+
+<div class="row">
+    <div class="col-md-3">1</div>
+    <div class="col-md-9">
+        <div class="row">
+            @foreach (var item in @Model)
+            {
+                <div class="col-md-4 mb-3">
+                    <partial name="_ProductCard" model="@item" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
