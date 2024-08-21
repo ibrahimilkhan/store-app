@@ -1,25 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
 using Repositories.Contracts;
+using Services.Contracts;
 
 namespace StoreApp.Controllers;
 public class ProductController : Controller
 {
-    private readonly IRepositoryManager _manager;
-    public ProductController(IRepositoryManager manager)
+    private readonly IServiceManager _serviceManager;
+    public ProductController(IServiceManager serviceManager)
     {
-        _manager = manager;
+        _serviceManager = serviceManager;
     }
 
     public IActionResult Index()
     {
-        var model = _manager.ProductRepository.GetAllProducts(false).ToList();
+        var model = _serviceManager.ProductService.GetAllProducts(false).ToList();
         return View(model);
     }
 
     public IActionResult Get(int id)
     {
-        var product = _manager.ProductRepository.GetOneProduct(id, false);
+        var product = _serviceManager.ProductService.GetProduct(id, false);
         return View(product);
     }
 }

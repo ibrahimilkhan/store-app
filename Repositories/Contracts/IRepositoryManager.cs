@@ -4,7 +4,7 @@ namespace Repositories.Contracts;
 
 public interface IRepositoryManager
 {
-    IProductRepository ProductRepository { get; }
-    ICategoryRepository CategoryRepository { get; }
+    IProductRepository ProductRepo { get; }
+    ICategoryRepository CategoryRepo { get; }
     void Save();
 }

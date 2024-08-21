@@ -10,15 +10,16 @@ public class RepositoryManager : IRepositoryManager
     public RepositoryManager(RepositoryContext context, IProductRepository productRepository, ICategoryRepository categoryRepository)
     {
         _context = context;
-        _productRepository = productRepository;
-        _categoryRepository = categoryRepository;
+        _productRepo = productRepository;
+        _categoryRepo = categoryRepository;
     }
 
-    private readonly IProductRepository _productRepository;
-    public IProductRepository ProductRepository => _productRepository;
+    private readonly IProductRepository _productRepo;
+    public IProductRepository ProductRepo => _productRepo;
 
-    private readonly ICategoryRepository _categoryRepository;
-    public ICategoryRepository CategoryRepository => _categoryRepository;
+    private readonly ICategoryRepository _categoryRepo;
+    public ICategoryRepository CategoryRepo => _categoryRepo;
+
 
 
     public void Save()
