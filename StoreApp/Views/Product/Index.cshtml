@@ -1,27 +1,24 @@
 @model List<Product>
 
-@section Header {
-    <div>
-        Only for Product Home Page Header
-    </div>
-}
-
-@section Footer {
-    <div>
-        Only for Product Home Page Footer
-    </div>
-}
 
 <div class="row">
-    <div class="col-md-3">1</div>
+    <div class="col-md-3">@await Component.InvokeAsync("CategoriesMenu")</div>
     <div class="col-md-9">
         <div class="row">
             @foreach (var item in Model)
             {
-                <div class="col-md-4 mb-3">
+                <div class="col-md-4 mt-3">
                     <partial name="_ProductCard" model="item" />
                 </div>
             }
         </div>
     </div>
 </div>
+
+
+
+@section Footer {
+    <div>
+        Only for Product Home Page Footer
+    </div>
+}

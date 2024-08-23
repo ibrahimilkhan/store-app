@@ -4,10 +4,10 @@ using Services.Contracts;
 
 namespace StoreApp.Components;
 
-public class CategoriesViewComponent : ViewComponent
+public class CategoriesMenuViewComponent : ViewComponent
 {
     private readonly IServiceManager _serviceManager;
-    public CategoriesViewComponent(IServiceManager serviceManager)
+    public CategoriesMenuViewComponent(IServiceManager serviceManager)
     {
         _serviceManager = serviceManager;
     }
@@ -18,5 +18,4 @@ public class CategoriesViewComponent : ViewComponent
         return View(categories);
 
     }
-
 }
