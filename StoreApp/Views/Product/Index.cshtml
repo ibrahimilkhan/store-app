@@ -16,10 +16,10 @@
     <div class="col-md-3">1</div>
     <div class="col-md-9">
         <div class="row">
-            @foreach (var item in @Model)
+            @foreach (var item in Model)
             {
                 <div class="col-md-4 mb-3">
-                    <partial name="_ProductCard" model="@item" />
+                    <partial name="_ProductCard" model="item" />
                 </div>
             }
         </div>
