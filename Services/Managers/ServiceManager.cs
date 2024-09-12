@@ -1,7 +1,7 @@
 using System;
 using Services.Contracts;
 
-namespace Services;
+namespace Services.Managers;
 
 public class ServiceManager : IServiceManager
 {
