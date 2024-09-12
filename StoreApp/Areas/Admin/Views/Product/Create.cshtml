@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model ProductDtoForInsertion
 
 <div class="text-center">
     <div class="display-6">Create</div>
@@ -6,6 +6,13 @@
 
 <form class="mx-auto" style="max-width: 600px;" method="post" asp-action="Create">
     <div class="text-danger" asp-validation-summary="All"></div>
+
+    <div class="form-group m-4">
+        <label asp-for="CategoryId" >Category</label>
+        <select class="form-control my-2" asp-items="@ViewBag.Categories" asp-for="CategoryId">
+        </select>
+    </div>
+
     <div class="form-group m-4">
         <label asp-for="Name" class="display-8"></label>
         <input class="form-control" asp-for="Name" />

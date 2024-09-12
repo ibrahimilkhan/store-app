@@ -1,3 +1,4 @@
+using Entities.Dtos;
 using Entities.Models;
 using Repositories.Contracts;
 using Services.Contracts;
@@ -13,8 +14,16 @@ public class ProductManager : IProductService
         _repositoryManager = repositoryManager;
     }
 
-    public void CreateProduct(Product product)
+    public void CreateProduct(ProductDtoForInsertion productDto)
     {
+        var product = new Product()
+        {
+            Id = productDto.Id,
+            Name = productDto.Name,
+            Price = productDto.Price,
+            CategoryId = productDto.CategoryId,
+        };
+        
         _repositoryManager.ProductRepo.CreateProduct(product);
         _repositoryManager.Save();
     }
