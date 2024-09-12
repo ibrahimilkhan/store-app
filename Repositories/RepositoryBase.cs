@@ -18,6 +18,11 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
         _context.Set<T>().Add(entity);
     }
 
+    public void Delete(T entity)
+    {
+        _context.Set<T>().Remove(entity);
+    }
+
     public IQueryable<T> FindAll(bool trackChanges)
     {
         return trackChanges ?

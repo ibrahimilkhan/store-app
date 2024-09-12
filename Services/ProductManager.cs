@@ -19,6 +19,17 @@ public class ProductManager : IProductService
         _repositoryManager.Save();
     }
 
+    public void DeleteProduct(int id)
+    {
+        var product = GetProduct(id, false);
+
+        if (product != null)
+        {
+            _repositoryManager.ProductRepo.DeleteProduct(product);
+            _repositoryManager.Save();
+        }
+    }
+
     public IEnumerable<Product> GetAllProducts(bool trackChanges)
     {
         return _repositoryManager.ProductRepo.GetAllProducts(trackChanges);

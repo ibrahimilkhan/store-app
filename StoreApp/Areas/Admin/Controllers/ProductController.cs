@@ -60,4 +60,11 @@ public class ProductController : Controller
         _manager.ProductService.UpdateOneProduct(product);
         return RedirectToAction("Index");
     }
+
+
+    public IActionResult Delete([FromRoute(Name = "id")] int id)
+    {
+        _manager.ProductService.DeleteProduct(id);
+        return RedirectToAction("Index");
+    }
 }

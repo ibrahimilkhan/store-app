@@ -9,4 +9,5 @@ public interface IProductService
     Product? GetProduct(int id, bool trackChanges);
     void CreateProduct(Product product);
     void UpdateOneProduct(Product product);
+    void DeleteProduct(int id);
 }

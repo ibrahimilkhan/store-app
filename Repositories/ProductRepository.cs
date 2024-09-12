@@ -15,6 +15,11 @@ public class ProductRepository : RepositoryBase<Product>, IProductRepository
         Create(product);
     }
 
+    public void DeleteProduct(Product product)
+    {
+        Delete(product);
+    }
+
     public IQueryable<Product> GetAllProducts(bool trackChanges)
     {
         return FindAll(trackChanges);
