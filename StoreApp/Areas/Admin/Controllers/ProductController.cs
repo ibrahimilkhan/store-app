@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
@@ -30,6 +31,33 @@ public class ProductController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Create([FromForm] Product product)
     {
+        if (ModelState.IsValid)
+        {
+            _manager.ProductService.CreateProduct(product);
+            return RedirectToAction("Index");
+        }
+
         return View();
+    }
+
+    public IActionResult Update([FromRoute(Name = "id")] int id)
+    {
+        var product = _manager.ProductService.GetProduct(id, false);
+
+        if (product == null)
+            return NotFound();
+
+        return View(product);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Update(Product product)
+    {
+        if (!ModelState.IsValid)
+            return View();
+
+        _manager.ProductService.UpdateOneProduct(product);
+        return RedirectToAction("Index");
     }
 }

@@ -22,6 +22,6 @@ public class ProductRepository : RepositoryBase<Product>, IProductRepository
 
     public Product? GetOneProduct(int id, bool trackChanges)
     {
-        return FindByCondition(x => x.Id.Equals(id), false);
+        return FindByCondition(x => x.Id.Equals(id), trackChanges);
     }
 }

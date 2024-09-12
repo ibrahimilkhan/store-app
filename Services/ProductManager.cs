@@ -17,7 +17,6 @@ public class ProductManager : IProductService
     {
         _repositoryManager.ProductRepo.CreateProduct(product);
         _repositoryManager.Save();
-
     }
 
     public IEnumerable<Product> GetAllProducts(bool trackChanges)
@@ -29,5 +28,18 @@ public class ProductManager : IProductService
     {
         var product = _repositoryManager.ProductRepo.GetOneProduct(id, trackChanges) ?? throw new Exception("Product not found!");
         return product;
+    }
+
+    public void UpdateOneProduct(Product product)
+    {
+        var formerProduct = GetProduct(product.Id, true);
+
+        if (formerProduct != null)
+        {
+            formerProduct.Price = product.Price;
+            formerProduct.Name = product.Name;
+
+            _repositoryManager.Save();
+        }
     }
 }

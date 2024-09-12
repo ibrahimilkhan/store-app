@@ -1,36 +1,61 @@
-﻿<div class="container my-3">
-        <div class="d-flex justify-content-end m-3">
-            <a style="width: 8%;" asp-action="Create" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
+﻿<body>
+    <div class="container my-3">
+        <div class="d-flex justify-content-end my-3">
+            <a asp-action="Create" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
         </div>
-    <div class="row justify-content-center">
-        <div class="text-center">
-            <table class="table table-bordered table-hover">
-                <thead class="table-light">
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+        <div class="row justify-content-center">
+            <div class="text-center">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
                         <tr>
-                            <td>@item.Id</td>
-                            <td>@item.Name</td>
-                            <td>@item.Price</td>
-
-                            <td style="width:10%">
-                                <div class="container">
-                                    <a class="btn btn-primary"><i class="fa-solid fa-pen-nib"></i></a>
-                                    <a class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                                </div>
-                            </td>
+                            <th>
+                                <i class="fa-solid fa-fingerprint"></i>
+                                Id
+                            </th>
+                            <th>
+                                <i class="fa-regular fa-address-card"></i>
+                                Name
+                            </th>
+                            <th>
+                                <i class="fa-solid fa-tag"></i>
+                                Price
+                            </th>
+                            <th style="width: 20%;">
+                                <i class="fa-solid fa-wrench"></i>
+                                Action
+                            </th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.Price.ToString("c")</td>
+
+                                <td>
+                                    <div class="container">
+                                        <a class="btn btn-primary" asp-controller="Product" asp-action="Get" asp-area="" asp-route-id="@item.Id">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </a>
+
+                                        <a class="btn btn-warning" asp-action="Update" asp-route-id="@item.Id">
+                                            <i class="fa-solid fa-pen-nib"></i>
+                                        </a>
+
+                                        <a class="btn btn-danger">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+</body>
+
+</html>
