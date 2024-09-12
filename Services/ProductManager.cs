@@ -13,6 +13,13 @@ public class ProductManager : IProductService
         _repositoryManager = repositoryManager;
     }
 
+    public void CreateProduct(Product product)
+    {
+        _repositoryManager.ProductRepo.CreateProduct(product);
+        _repositoryManager.Save();
+
+    }
+
     public IEnumerable<Product> GetAllProducts(bool trackChanges)
     {
         return _repositoryManager.ProductRepo.GetAllProducts(trackChanges);

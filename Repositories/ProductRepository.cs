@@ -10,6 +10,11 @@ public class ProductRepository : RepositoryBase<Product>, IProductRepository
 
     }
 
+    public void CreateProduct(Product product)
+    {
+        Create(product);
+    }
+
     public IQueryable<Product> GetAllProducts(bool trackChanges)
     {
         return FindAll(trackChanges);

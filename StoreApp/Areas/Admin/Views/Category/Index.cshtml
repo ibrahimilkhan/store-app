@@ -1,11 +1,33 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h3>Category Index</h3>
-</body>
-</html>
+﻿@model IEnumerable<Category>
+
+<div class="container my-3">
+    <div class="row justify-content-center">
+        <div class="text-center" style="width: 30%;">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Categories</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+
+                            <td>
+                                <div class="container">
+                                    <button>U</button>
+                                    <button>D</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

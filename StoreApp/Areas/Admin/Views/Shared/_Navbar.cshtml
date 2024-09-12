@@ -1,0 +1,33 @@
+﻿<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Admin</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" asp-controller="Dashboard"
+                        asp-action="Index">Dashboard</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" asp-controller="Product" asp-action="Index">Product (@await Component.InvokeAsync("ProductCount"))</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" asp-controller="Category" asp-action="Index">Category</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li>
+                    <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Web</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

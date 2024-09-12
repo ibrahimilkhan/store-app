@@ -1,11 +1,36 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h3>Product Index</h3>
-</body>
-</html>
+﻿<div class="container my-3">
+        <div class="d-flex justify-content-end m-3">
+            <a style="width: 8%;" asp-action="Create" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
+        </div>
+    <div class="row justify-content-center">
+        <div class="text-center">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+
+                            <td style="width:10%">
+                                <div class="container">
+                                    <a class="btn btn-primary"><i class="fa-solid fa-pen-nib"></i></a>
+                                    <a class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
