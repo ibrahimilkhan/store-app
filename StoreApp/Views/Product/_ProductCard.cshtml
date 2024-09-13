@@ -1,13 +1,21 @@
 @model Product
 
-<div class="card" style="width: 15rem;">
-    <img class="card-img-top" src="~/images/image.png" alt="Card image cap">
-    <div class="card-body">
-        <h3>@Model.Name</h3>
-        <p>@Model.Price.ToString("c")</p>
-        <a class="btn btn-primary" asp-action="Get" asp-route-id="@Model.Id">
-            <i class="fa-solid fa-arrow-right"></i>
-            Details
-        </a>
+<div class="card" style="width: 15rem; height: 25rem; display: flex; flex-direction: column; position: relative;">
+    <img class="card-img-top" src="@Model.ImageUrl" alt="Card image cap" style="object-fit: cover; height: 60%; width: 100%;">
+    <div class="card-body" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1rem;">
+        <div style="flex: 1;">
+            <h5 class="card-title" style="margin-bottom: 0.5rem;">
+                @Model.Name
+            </h5>
+        </div>
+        <div style="position: relative;">
+            <span style="position: absolute; top: -2rem; right: 1rem; font-weight: bold; color: #333;">
+                @Model.Price.ToString("c")
+            </span>
+            <a class="btn btn-primary" asp-action="Get" asp-route-id="@Model.Id" style="width: 100%; padding: 0.5rem 1rem; font-size: 15px;">
+                <i class="fa-solid fa-arrow-right"></i>
+                Details
+            </a>
+        </div>
     </div>
 </div>

@@ -4,6 +4,7 @@ using Entities.Dtos;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.FileProviders;
 using Services.Contracts;
 
 namespace StoreApp.Areas.Admin.Controllers;
@@ -25,17 +26,26 @@ public class ProductController : Controller
     }
 
     public IActionResult Create()
-    {       
+    {
         ViewBag.Categories = GetCategorySelectList();
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create([FromForm] ProductDtoForInsertion product)
+    public async Task<IActionResult> Create([FromForm] ProductDtoForInsertion product, IFormFile file)
     {
         if (ModelState.IsValid)
         {
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", file.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            product.ImageUrl = string.Concat("/images/", file.FileName);
+
             _manager.ProductService.CreateProduct(product);
             return RedirectToAction("Index");
         }
@@ -72,7 +82,7 @@ public class ProductController : Controller
         return RedirectToAction("Index");
     }
 
-        private SelectList GetCategorySelectList()
+    private SelectList GetCategorySelectList()
     {
         var categories = _manager.CategoryService.GetAllCategories(false);
         return new SelectList(categories, "Id", "Name", 1); ;

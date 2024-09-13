@@ -68,11 +68,17 @@ namespace StoreApp.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Summary")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -86,43 +92,55 @@ namespace StoreApp.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
+                            ImageUrl = "/images/1.jpg",
                             Name = "Razer BlackWidow V3 Mini",
-                            Price = 3990m
+                            Price = 3990m,
+                            Summary = ""
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 1,
+                            ImageUrl = "/images/2.jpg",
                             Name = "Logitech G305",
-                            Price = 1399m
+                            Price = 1399m,
+                            Summary = ""
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 1,
+                            ImageUrl = "/images/3.jpg",
                             Name = "BenQ Zowie XL2566K",
-                            Price = 6900m
+                            Price = 6900m,
+                            Summary = ""
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 2,
-                            Name = "i7-13700k",
-                            Price = 15699m
+                            ImageUrl = "/images/4.jpg",
+                            Name = "Intel i7-13700k",
+                            Price = 15699m,
+                            Summary = ""
                         },
                         new
                         {
                             Id = 5,
                             CategoryId = 4,
-                            Name = "RTX 4060",
-                            Price = 13615m
+                            ImageUrl = "/images/5.jpg",
+                            Name = "MSI GeForce RTX 4060 VENTUS",
+                            Price = 13615m,
+                            Summary = ""
                         },
                         new
                         {
                             Id = 6,
                             CategoryId = 5,
+                            ImageUrl = "/images/6.jpg",
                             Name = "Thinkpad X1 Carbon G11",
-                            Price = 68790m
+                            Price = 68790m,
+                            Summary = ""
                         });
                 });
 

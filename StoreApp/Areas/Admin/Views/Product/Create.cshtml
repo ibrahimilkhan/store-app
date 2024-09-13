@@ -4,11 +4,11 @@
     <div class="display-6">Create</div>
 </div>
 
-<form class="mx-auto" style="max-width: 600px;" method="post" asp-action="Create">
+<form class="mx-auto" style="max-width: 600px;" method="post" asp-action="Create" enctype="multipart/form-data">
     <div class="text-danger" asp-validation-summary="All"></div>
 
     <div class="form-group m-4">
-        <label asp-for="CategoryId" >Category</label>
+        <label asp-for="CategoryId">Category</label>
         <select class="form-control my-2" asp-items="@ViewBag.Categories" asp-for="CategoryId">
         </select>
     </div>
@@ -19,8 +19,18 @@
     </div>
 
     <div class="form-group m-4">
+        <label asp-for="Summary" class="display-8"></label>
+        <input class="form-control" asp-for="Summary" />
+    </div>
+
+    <div class="form-group m-4">
         <label asp-for="Price" class="display-8"></label>
         <input class="form-control" asp-for="Price" />
+    </div>
+
+    <div class="form-group m-4">
+        <label asp-for="ImageUrl" class="display-8"></label>
+        <input class="form-control" name="file" type="file" />
     </div>
 
     <div class="d-flex justify-content-between m-4">
@@ -29,7 +39,6 @@
                 <i class="fa-solid fa-floppy-disk"></i>
                 Save
             </button>
-
         </div>
 
         <div>
