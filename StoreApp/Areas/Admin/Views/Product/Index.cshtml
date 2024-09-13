@@ -1,4 +1,5 @@
-﻿<body>
+﻿@model IEnumerable<ProductDtoForView>
+<body>
     <div class="container my-3">
         <div class="d-flex justify-content-end my-3">
             <a asp-action="Create" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
@@ -17,7 +18,7 @@
                                 Name
                             </th>
                             <th>
-                                <i class="fa-regular fa-address-card"></i>
+                                <i class="fa-solid fa-table-list"></i>
                                 Category
                             </th>
                             <th>
@@ -36,7 +37,7 @@
                             <tr>
                                 <td>@item.Id</td>
                                 <td>@item.Name</td>
-                                <td>@item.CategoryId</td>
+                                <td>@item.CategoryName</td>
                                 <td>@item.Price.ToString("c")</td>
 
                                 <td>
@@ -63,5 +64,3 @@
         </div>
     </div>
 </body>
-
-</html>

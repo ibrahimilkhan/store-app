@@ -30,4 +30,9 @@ public class ProductRepository : RepositoryBase<Product>, IProductRepository
     {
         return FindByCondition(x => x.Id.Equals(id), trackChanges);
     }
+
+    public void UpdateOneProduct(Product product)
+    {
+        Update(product);
+    }
 }

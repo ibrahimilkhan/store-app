@@ -36,4 +36,9 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
         _context.Set<T>().Where(expression).SingleOrDefault() :
         _context.Set<T>().Where(expression).AsNoTracking().SingleOrDefault();
     }
+
+    public void Update(T entity)
+    {
+        _context.Set<T>().Update(entity);
+    }
 }

@@ -20,14 +20,13 @@ public class ProductController : Controller
 
     public ViewResult Index()
     {
-        var products = _manager.ProductService.GetAllProducts(false);
+        var products = _manager.ProductService.GetAllProductDtosForView(false);
         return View(products);
     }
 
     public IActionResult Create()
-    {
-        var categories = _manager.CategoryService.GetAllCategories(false);
-        ViewBag.Categories = new SelectList(categories,"Id","Name",1); ;
+    {       
+        ViewBag.Categories = GetCategorySelectList();
         return View();
     }
 
@@ -46,7 +45,8 @@ public class ProductController : Controller
 
     public IActionResult Update([FromRoute(Name = "id")] int id)
     {
-        var product = _manager.ProductService.GetProduct(id, false);
+        ViewBag.Categories = GetCategorySelectList();
+        var product = _manager.ProductService.GetProductDtoForUpdate(id, false);
 
         if (product == null)
             return NotFound();
@@ -56,7 +56,7 @@ public class ProductController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Update(Product product)
+    public IActionResult Update([FromForm] ProductDtoForUpdate product)
     {
         if (!ModelState.IsValid)
             return View();
@@ -70,5 +70,11 @@ public class ProductController : Controller
     {
         _manager.ProductService.DeleteProduct(id);
         return RedirectToAction("Index");
+    }
+
+        private SelectList GetCategorySelectList()
+    {
+        var categories = _manager.CategoryService.GetAllCategories(false);
+        return new SelectList(categories, "Id", "Name", 1); ;
     }
 }

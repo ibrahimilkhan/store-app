@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model ProductDtoForUpdate
 
 <div class="text-center my-3">
     <div class="display-6">Update</div>
@@ -6,14 +6,24 @@
 
 <form class="mx-auto" style="max-width: 600px;" method="post" asp-action="Update">
     <div class="text-danger" asp-validation-summary="All"></div>
+    <input type="hidden" asp-for="Id" />
+
     <div class="form-group m-4">
-        <label asp-for="Name" class="display-8"></label>
-        <input class="form-control" asp-for="Name" />
+        <label asp-for="CategoryId"><i class="fa-solid fa-table-list"></i> Category</label>
+        <select class="form-select my-2" asp-items="@ViewBag.Categories" asp-for="CategoryId">
+        </select>
     </div>
 
     <div class="form-group m-4">
-        <label asp-for="Price" class="display-8"></label>
-        <input class="form-control" asp-for="Price" />
+        <label asp-for="Name" class="display-8"><i class="fa-regular fa-address-card"></i> Name
+        </label>
+        <input class="form-control my-2" asp-for="Name" />
+    </div>
+
+    <div class="form-group m-4">
+        <label asp-for="Price" class="display-8"> <i class="fa-solid fa-tag"></i> Price
+        </label> 
+        <input class="form-control my-2" asp-for="Price" />
     </div>
 
     <div class="d-flex justify-content-between m-4">

@@ -36,6 +36,12 @@ public class ProductManager : IProductService
         }
     }
 
+    public IEnumerable<ProductDtoForView> GetAllProductDtosForView(bool trackChanges)
+    {
+        var products = _repositoryManager.ProductRepo.GetAllProducts(false); // Retrieve products
+        return _mapper.Map<IEnumerable<ProductDtoForView>>(products);
+    }
+
     public IEnumerable<Product> GetAllProducts(bool trackChanges)
     {
         return _repositoryManager.ProductRepo.GetAllProducts(trackChanges);
@@ -47,16 +53,17 @@ public class ProductManager : IProductService
         return product;
     }
 
-    public void UpdateOneProduct(Product product)
+    public ProductDtoForUpdate? GetProductDtoForUpdate(int id, bool trackChanges)
     {
-        var formerProduct = GetProduct(product.Id, true);
+        var product = _repositoryManager.ProductRepo.GetOneProduct(id, trackChanges);
+        var productDto = _mapper.Map<ProductDtoForUpdate>(product);
+        return productDto;
+    }
 
-        if (formerProduct != null)
-        {
-            formerProduct.Price = product.Price;
-            formerProduct.Name = product.Name;
-
-            _repositoryManager.Save();
-        }
+    public void UpdateOneProduct(ProductDtoForUpdate productDto)
+    {
+        var product = _mapper.Map<Product>(productDto);
+        _repositoryManager.ProductRepo.UpdateOneProduct(product);
+        _repositoryManager.Save();
     }
 }

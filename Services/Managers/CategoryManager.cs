@@ -17,4 +17,9 @@ public class CategoryManager : ICategoryService
     {
         return _repoManager.CategoryRepo.FindAll(trackChanges);
     }
+
+    public Category? GetCategory(int id, bool trackChanges)
+    {
+        return _repoManager.CategoryRepo.FindByCondition(x=>x.Id == id, trackChanges);
+    }
 }
