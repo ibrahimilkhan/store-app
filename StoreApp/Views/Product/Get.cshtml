@@ -1,11 +1,17 @@
 @model Product;
 
-
-<p>@Model.Name</p>
-<p>@Model.Price</p>
-
-<div class="btn-group">
-    <a href="javascript:history.back()" class="btn btn-warning" aria-label="Go back">
-        <i class="fa-solid fa-backward" aria-hidden="true"></i> Back
-    </a>
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center">
+            <h2>
+                @Model.Name
+            </h2>
+            <img class="img-fluid shadow rounded-3 m-4" src="@Model.ImageUrl" width="400px">
+            <p class="lead">@Model.Price.ToString("c")</p>
+            <p>@Model.Summary</p>
+            <a href="javascript:history.back()" class="btn btn-primary" aria-label="Go back">
+                <i class="fa-solid fa-backward" aria-hidden="true"></i> Back
+            </a>
+        </div>
+    </div>
 </div>

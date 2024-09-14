@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ProductDtoForView>
+
 <body>
     <div class="container my-3">
         <div class="d-flex justify-content-end my-3">
@@ -12,6 +13,10 @@
                             <th>
                                 <i class="fa-solid fa-fingerprint"></i>
                                 Id
+                            </th>
+                            <th>
+                                <i class="fa-regular fa-image"></i>
+                                Image
                             </th>
                             <th>
                                 <i class="fa-regular fa-address-card"></i>
@@ -36,6 +41,9 @@
                         {
                             <tr>
                                 <td>@item.Id</td>
+                                <td>
+                                    <img class="rounded" src="@item.ImageUrl" width="75">
+                                </td>
                                 <td>@item.Name</td>
                                 <td>@item.CategoryName</td>
                                 <td>@item.Price.ToString("c")</td>
@@ -47,7 +55,7 @@
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </a>
 
-                                        <a class="btn btn-warning" asp-action="Update" asp-route-id="@item.Id">
+                                        <a class="btn btn-secondary" asp-action="Update" asp-route-id="@item.Id">
                                             <i class="fa-solid fa-pen-nib"></i>
                                         </a>
 
