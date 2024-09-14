@@ -4,7 +4,7 @@
     <div class="display-6">Update</div>
 </div>
 
-<form class="mx-auto" style="max-width: 600px;" method="post" asp-action="Update">
+<form class="mx-auto" style="max-width: 600px;" method="post" asp-action="Update" enctype="multipart/form-data">
     <div class="text-danger" asp-validation-summary="All"></div>
     <input type="hidden" asp-for="Id" />
 
@@ -22,8 +22,18 @@
 
     <div class="form-group m-4">
         <label asp-for="Price" class="display-8"> <i class="fa-solid fa-tag"></i> Price
-        </label> 
+        </label>
         <input class="form-control my-2" asp-for="Price" />
+    </div>
+
+    <div class="form-group m-4">
+        <label asp-for="Summary" class="display-8"></label>
+        <input class="form-control" asp-for="Summary" />
+    </div>
+
+    <div class="form-group m-2">
+        <img src="@Model.ImageUrl" alt="test" width="40%">
+        <input class="form-control" name="file" type="file" />
     </div>
 
     <div class="d-flex justify-content-between m-4">

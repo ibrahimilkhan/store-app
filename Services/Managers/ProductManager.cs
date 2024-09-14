@@ -62,6 +62,12 @@ public class ProductManager : IProductService
 
     public void UpdateOneProduct(ProductDtoForUpdate productDto)
     {
+        if (productDto.ImageUrl == null)
+        {
+            var formerProd = GetProduct(productDto.Id, false);
+            productDto.ImageUrl = formerProd?.ImageUrl;
+        }
+
         var product = _mapper.Map<Product>(productDto);
         _repositoryManager.ProductRepo.UpdateOneProduct(product);
         _repositoryManager.Save();

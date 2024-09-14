@@ -1,4 +1,3 @@
-using System;
 using Repositories.Contracts;
 
 namespace Repositories;

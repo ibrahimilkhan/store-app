@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
 
-namespace Repositories;
+namespace Repositories.Repos;
 
 public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
 {

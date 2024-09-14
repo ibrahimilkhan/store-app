@@ -2,7 +2,7 @@ using System;
 using Entities.Models;
 using Repositories.Contracts;
 
-namespace Repositories;
+namespace Repositories.Repos;
 
 public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
 {

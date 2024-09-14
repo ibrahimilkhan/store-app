@@ -2,7 +2,7 @@ using Entities.Dtos;
 using Entities.Models;
 using Repositories.Contracts;
 
-namespace Repositories;
+namespace Repositories.Repos;
 
 public class ProductRepository : RepositoryBase<Product>, IProductRepository
 {
