@@ -6,6 +6,6 @@ namespace Entities.Models;
 public class CardLine
 {
     public int Id { get; set; }
-    public Product? Product { get; set; }
+    public required Product Product { get; set; }
     public int Quantity { get; set; }
 }
