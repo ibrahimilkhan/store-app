@@ -1,0 +1,16 @@
+﻿@page "/sessiondemo"
+@model StoreApp.Pages.SessionDemoModel
+@{
+}
+
+<div class="text-center my-6">
+
+    <div class="display-6">Hello @Model.Name</div>
+
+    <form method="post" asp-page="/sessiondemo">
+        <div class="form-group">
+            <input class="form-control" name="name" placeholder="Enter your name.">
+            <input type="submit">
+        </div>
+    </form>
+</div>
