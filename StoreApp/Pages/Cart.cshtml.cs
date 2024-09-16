@@ -5,17 +5,18 @@ using Services.Contracts;
 
 namespace StoreApp.Pages
 {
-    public class CardModel : PageModel
+    public class CartModel : PageModel
     {
         private readonly IServiceManager _manager;
 
-        public Card Card { get; set; }
+        public readonly Cart Cart;
         public string ReturnUrl { get; set; } = "/";
 
 
-        public CardModel(IServiceManager manager)
+        public CartModel(IServiceManager manager, Cart card)
         {
             _manager = manager;
+            Cart = card;
         }
 
         public void OnGet(string returnUrl)
@@ -29,7 +30,7 @@ namespace StoreApp.Pages
 
             if (product != null)
             {
-                Card.AddProduct(product, 1);
+                Cart.AddProduct(product, 1);
             }
 
             return Page();
@@ -41,7 +42,7 @@ namespace StoreApp.Pages
 
             if (product != null)
             {
-                Card.RemoveProductLine(product, 1);
+                Cart.RemoveProductLine(product, 1);
             }
 
             return Page();

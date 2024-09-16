@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Models;
 
-public class CardLine
+public class CartLine
 {
     public int Id { get; set; }
     public required Product Product { get; set; }

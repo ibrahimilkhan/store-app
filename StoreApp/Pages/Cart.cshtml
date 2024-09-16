@@ -1,0 +1,58 @@
+﻿@page "/cart"
+@model CartModel
+
+<div>
+    <div class="table-container">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var line in Model.Cart?.CartLines ?? Enumerable.Empty<CartLine>())
+                {
+                    <tr>
+                        <td>@line.Product.Name</td>
+                        <td>@line.Quantity</td>
+                        <td>@line.Product.Price.ToString("c2")</td>
+                        <td>@((line.Product.Price * line.Quantity).ToString("c"))</td>
+                        <td>
+                            <form method="post" asp-page-handler="Remove">
+                                <input type="hidden" name="productId" value="@line.Product.Id">
+                                <input type="hidden" name="returnUrl" value="@Model.ReturnUrl">
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-left fw-bold">Total:</td>
+                    <td class="text-right text-success fw-bold">
+                        @Model.Cart?.CalculateTotalAmount().ToString("c2")
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<style>
+    .table-container {
+        display: block;
+        margin: auto;
+        margin-top: 50px;
+        width: 60%;
+    }
+</style>

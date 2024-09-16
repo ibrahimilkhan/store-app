@@ -1,7 +1,7 @@
 @model Product
 
 <div class="card" style="width: 15rem; height: 25rem; display: flex; flex-direction: column; position: relative;">
-    <img class="card-img-top" src="@Model?.ImageUrl" alt="Card image cap"
+    <img class="card-img-top" src="@Model?.ImageUrl" alt="Cart image cap"
         style="object-fit: cover; height: 60%; width: 100%;">
     <div class="card-body"
         style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1rem;">
@@ -18,11 +18,11 @@
         </div>
 
         <div class="btn-group">
-            <a class="btn btn-primary mx-1" asp-action="Get" asp-route-id="@Model?.Id;">
+            <a class="btn btn-primary mx-1" asp-action="Get" asp-route-id="@Model?.Id">
                 <i class="fa-solid fa-arrow-right"></i>
                 Details
             </a>
-            <form id="@Model?.Id" asp-page="/Card" asp-page-handler="Add" method="post">
+            <form id="@Model?.Id" asp-page="/Cart" asp-page-handler="Add" method="post">
                 <input type="hidden" name="productId" asp-for="Id">
                 <input type="hidden" name="returnUrl" value="/Product/Get/@Model?.Id">
                 <button type="submit" class="btn btn-outline-primary">

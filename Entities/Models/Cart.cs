@@ -1,20 +1,17 @@
-using System;
-using System.Security.Cryptography.X509Certificates;
-
 namespace Entities.Models;
 
-public class Card
+public class Cart
 {
-    public List<CardLine> CardLines { get; set; }
+    public List<CartLine> CartLines { get; set; }
 
-    public Card()
+    public Cart()
     {
-        CardLines = [];
-    }
+        CartLines = [];
+    } 
 
     public void AddProduct(Product product, int quantity)
     {
-        var line = CardLines.FirstOrDefault(x => x.Product.Id == product.Id);
+        var line = CartLines.FirstOrDefault(x => x.Product.Id == product.Id);
 
         if (line != null)
         {
@@ -22,7 +19,7 @@ public class Card
         }
         else
         {
-            CardLines.Add(new CardLine
+            CartLines.Add(new CartLine
             {
                 Product = product,
                 Quantity = quantity
@@ -32,11 +29,11 @@ public class Card
 
     public void RemoveProductLine(Product product, int quantity)
     {
-        var line = CardLines.FirstOrDefault(x => x.Product.Id == product.Id);
+        var line = CartLines.FirstOrDefault(x => x.Product.Id == product.Id);
 
         if (line != null)
         {
-            CardLines.RemoveAll(x => x.Product.Id == product.Id);
+            CartLines.RemoveAll(x => x.Product.Id == product.Id);
         }
     }
 
@@ -44,7 +41,7 @@ public class Card
     {
         decimal totalAmount = 0;
 
-        foreach (CardLine line in CardLines)
+        foreach (CartLine line in CartLines)
         {
             totalAmount += line.Quantity * line.Product.Price;
         }
@@ -54,6 +51,6 @@ public class Card
 
     public void Clear()
     {
-        CardLines.Clear();
+        CartLines.Clear();
     }
 }
