@@ -9,7 +9,7 @@ public class Cart
         CartLines = [];
     } 
 
-    public void AddProduct(Product product, int quantity)
+    public virtual void AddProduct(Product product, int quantity)
     {
         var line = CartLines.FirstOrDefault(x => x.Product.Id == product.Id);
 
@@ -27,7 +27,7 @@ public class Cart
         }
     }
 
-    public void RemoveProductLine(Product product, int quantity)
+    public virtual void RemoveProductLine(Product product, int quantity)
     {
         var line = CartLines.FirstOrDefault(x => x.Product.Id == product.Id);
 
@@ -37,7 +37,7 @@ public class Cart
         }
     }
 
-    public decimal CalculateTotalAmount()
+    public virtual decimal CalculateTotalAmount()
     {
         decimal totalAmount = 0;
 
@@ -49,7 +49,7 @@ public class Cart
         return totalAmount;
     }
 
-    public void Clear()
+    public virtual void Clear()
     {
         CartLines.Clear();
     }

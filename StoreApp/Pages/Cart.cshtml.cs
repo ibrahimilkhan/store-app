@@ -2,6 +2,7 @@ using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.Contracts;
+using StoreApp.Infrastructure.Extensions;
 
 namespace StoreApp.Pages
 {
@@ -9,19 +10,19 @@ namespace StoreApp.Pages
     {
         private readonly IServiceManager _manager;
 
-        public readonly Cart Cart;
+        public Cart Cart { get; set; }
         public string ReturnUrl { get; set; } = "/";
 
 
-        public CartModel(IServiceManager manager, Cart card)
+        public CartModel(IServiceManager manager)
         {
             _manager = manager;
-            Cart = card;
         }
 
         public void OnGet(string returnUrl)
         {
             ReturnUrl = returnUrl ?? "/";
+            Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
         }
 
         public IActionResult OnPostAdd(int productId, string returnUrl)
@@ -30,7 +31,10 @@ namespace StoreApp.Pages
 
             if (product != null)
             {
+                Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
                 Cart.AddProduct(product, 1);
+
+                HttpContext.Session.SetJson("cart", Cart);
             }
 
             return Page();
@@ -42,7 +46,10 @@ namespace StoreApp.Pages
 
             if (product != null)
             {
+                Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
                 Cart.RemoveProductLine(product, 1);
+
+                HttpContext.Session.SetJson("cart", Cart);
             }
 
             return Page();
