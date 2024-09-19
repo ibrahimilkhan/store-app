@@ -15,6 +15,6 @@ public class MappingProfile : Profile
 
         CreateMap<Product, ProductDtoForView>()
             .ForMember(dest => dest.CategoryName,
-                       opt => opt.MapFrom<CategoryNameResolver>());
+                       opt => opt?.MapFrom<CategoryNameResolver>());
     }
 }
