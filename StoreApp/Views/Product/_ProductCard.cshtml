@@ -24,7 +24,7 @@
             </a>
             <form id="@Model?.Id" asp-page="/Cart" asp-page-handler="Add" method="post">
                 <input type="hidden" name="productId" asp-for="Id">
-                <input type="hidden" name="returnUrl" value="/Product/Get/@Model?.Id">
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()">
                 <button type="submit" class="btn btn-outline-primary">
                     <i class="fa fa-cart-plus"></i>
                     Add

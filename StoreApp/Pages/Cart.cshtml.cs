@@ -10,7 +10,7 @@ namespace StoreApp.Pages
     {
         private readonly IServiceManager _manager;
 
-        public Cart Cart { get; set; }
+        public required Cart Cart { get; set; }
         public string ReturnUrl { get; set; } = "/";
 
 
@@ -37,7 +37,7 @@ namespace StoreApp.Pages
                 HttpContext.Session.SetJson("cart", Cart);
             }
 
-            return Page();
+            return RedirectToPage(new { returnUrl });
         }
 
         public IActionResult OnPostRemove(int productId, string returnUrl)
