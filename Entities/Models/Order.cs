@@ -9,10 +9,10 @@ public class Order
     public ICollection<CartLine> Lines { get; set; } = new List<CartLine>();
 
     [Required(ErrorMessage = "Name is required.")]
-    public required string Name { get; set; }
+    public string? Name { get; set; }
 
     [Required(ErrorMessage = "First line is required.")]
-    public required string Line1 { get; set; }
+    public string? Line1 { get; set; }
     public string? Line2 { get; set; }
     public string? Line3 { get; set; }
     public string? City { get; set; }

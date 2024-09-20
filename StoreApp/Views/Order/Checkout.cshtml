@@ -1,0 +1,39 @@
+﻿@model Order
+
+<div class="text-danger" asp-validation-summary="All"></div>
+<form method="post" asp-action="Checkout">
+    <div class="form-group my-3 mx-5">
+        <label asp-for="@Model.Name">Name</label>
+        <input class="form-control" asp-for="Name"></label>
+    </div>
+
+    <div class="form-group my-3 mx-5">
+        <label asp-for="@Model.Line1">City</label>
+        <input class="form-control" asp-for="City"></label>
+    </div>
+
+
+    <div class="form-group my-3 mx-5">
+        <label asp-for="@Model.Line1">Address line - 1</label>
+        <input class="form-control" asp-for="Line1"></label>
+    </div>
+
+    <div class="form-group m-3 mx-5">
+        <label asp-for="@Model.Line2">Address line - 2 (optional)</label>
+        <input class="form-control" asp-for="Line1"></label>
+    </div>
+
+    <div class="form-group my-2 mx-5">
+        <label asp-for="@Model.Line3">Address line - 3 (optional)</label>
+        <input class="form-control" asp-for="Line1"></label>
+    </div>
+
+    <div class="form-group my-2 mx-5">
+        <input asp-for="@Model.IsGift" />
+        <label asp-for="Line1">Wrap in a gift bag</label>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Complete order</button>
+    </div>
+
+</form>
