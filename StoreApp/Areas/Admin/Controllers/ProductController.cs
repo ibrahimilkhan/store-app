@@ -1,14 +1,7 @@
-using System;
-using System.Diagnostics;
+
 using Entities.Dtos;
-using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Routing.Tree;
-using Microsoft.AspNetCore.SignalR.Protocol;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.FileProviders;
 using Services.Contracts;
 
 namespace StoreApp.Areas.Admin.Controllers;

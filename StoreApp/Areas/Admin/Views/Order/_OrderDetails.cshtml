@@ -1,0 +1,52 @@
+﻿@model Order
+@{
+    var total = @Model.Lines.Sum(x => x.Product.Price * x.Quantity);
+}
+
+<div class="row shadow my-3">
+    <div class="col-md-3 p-3 bg-light shadow">
+        <h5 class="text-center">
+            <i class="fa fa-address-book text-danger"></i>
+            <br>
+            @Model.Name
+        </h5>
+        <div class="mx-3">
+            <p>@Model.Line1</p>
+            <p>@Model.Line2</p>
+            <p>@Model.Line3</p>
+            <p>@Model.City</p>
+            <p class="rounded-2 text-center">
+                <span class="bg-warning border border-warning p-2">Shipping </span>
+                <span class="text-muted border border-warning p-2">@(Model.IsShipped ? "Completed" : "In Progress")</span>
+            </p>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h5 class="mt-3 text-center">
+            Cart
+        </h2>
+        <ul class="list-group m-2 p-2">
+            @foreach (var cartItem in Model.Lines)
+            {
+                <li class="list-group-item d-flex justify-content-between brand">
+                    @cartItem.Product.Name (@cartItem.Quantity)
+                    <b>
+                        @((cartItem.Quantity * cartItem.Product.Price).ToString("c2"))
+                    </b>
+                </li>
+            }
+            <li class="list-group-item d-flex justify-content-between text-success">
+                Total
+                <b>@total.ToString("c2")</b>
+            </li>
+        </ul>
+        <div class="text-end m-2 p-2">
+            <form method="post" asp-action="Complete">
+                <input type="hidden" name="id" value="@Model.Id">
+                <button type="submit" class="btn btn-primary" disabled="@Model.IsShipped">
+                    Complete
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
