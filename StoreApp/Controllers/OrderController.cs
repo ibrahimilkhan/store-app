@@ -23,7 +23,7 @@ public class OrderController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Checkout([FromForm] Order order)
     {
-        if (order.Lines.Count() == 0)
+        if (_cart.CartLines.Count() == 0)
         {
             ModelState.AddModelError("", "Your cart is empty!");
         }
@@ -34,7 +34,7 @@ public class OrderController : Controller
             _manager.OrderService.SaveOrder(order);
             _cart.Clear();
 
-            return RedirectToPage("/Complete", new { OrderId = order.Id });
+            return RedirectToPage("/OrderComplete", new { OrderId = order.Id });
         }
         else
         {
