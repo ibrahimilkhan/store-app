@@ -8,7 +8,7 @@ public class OrderRepository : RepositoryBase<Order>, IOrderRepository
 {
     public OrderRepository(RepositoryContext context) : base(context)
     {
-        
+
     }
 
     public IQueryable<Order> Orders => _context.Orders.Include(o => o.Lines)
@@ -27,6 +27,8 @@ public class OrderRepository : RepositoryBase<Order>, IOrderRepository
 
         order.IsShipped = true;
 
+        _context.SaveChanges();
+
     }
 
     public Order? GetOneOrder(int id)
@@ -40,5 +42,7 @@ public class OrderRepository : RepositoryBase<Order>, IOrderRepository
 
         if (order.Id == 0)
             _context.Orders.Add(order);
+
+        _context.SaveChanges();
     }
 }

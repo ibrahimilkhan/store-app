@@ -40,7 +40,7 @@
                 <tr>
                     <td colspan="3" class="text-left fw-bold">Total:</td>
                     <td class="text-right text-success fw-bold">
-                        @Model.Cart?.CalculateTotalAmount().ToString("c2")
+                        @Model.Cart?.ComputeTotalValue().ToString("c2")
                     </td>
                 </tr>
             </tfoot>

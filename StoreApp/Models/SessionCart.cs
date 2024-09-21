@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 using Entities.Models;
 using StoreApp.Infrastructure.Extensions;
 
@@ -6,6 +7,7 @@ namespace StoreApp.Models;
 
 public class SessionCart : Cart
 {
+    [JsonIgnore]
     public ISession? Session { get; set; }
 
     public static Cart GetCart(IServiceProvider serviceProdiver)
@@ -18,20 +20,23 @@ public class SessionCart : Cart
     }
 
 
-    public override void AddProduct(Product product, int quantity)
+    public override void AddItem(Product product, int quantity)
     {
-
-        base.AddProduct(product, quantity);
+        base.AddItem(product, quantity);
+        Session?.SetJson<SessionCart>("cart", this);
     }
 
-    public override void RemoveProductLine(Product product, int quantity)
+
+    public override void RemoveLine(Product product)
     {
-        base.RemoveProductLine(product, quantity);
+        base.RemoveLine(product);
+        Session?.SetJson<SessionCart>("cart", this);
+
     }
 
-    public override decimal CalculateTotalAmount()
+    public override void Clear()
     {
-        return base.CalculateTotalAmount();
+        base.Clear();
+        Session?.Remove("cart");
     }
-
 }

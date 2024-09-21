@@ -19,5 +19,4 @@ public class Order
     public bool IsGift { get; set; }
     public bool IsShipped { get; set; }
     public DateTime OrderTime { get; set; } = DateTime.Now;
-
 }

@@ -1,11 +1,15 @@
 using System.Text.Json;
-using Microsoft.AspNetCore.Http.Features;
 
 namespace StoreApp.Infrastructure.Extensions;
 
 public static class SessionExtension
 {
     public static void SetJson(this ISession session, string key, object value)
+    {
+        session.SetString(key, JsonSerializer.Serialize(value));
+    }
+
+    public static void SetJson<T>(this ISession session, string key, T value)
     {
         session.SetString(key, JsonSerializer.Serialize(value));
     }
