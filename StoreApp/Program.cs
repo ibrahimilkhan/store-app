@@ -1,47 +1,15 @@
-using Entities.Models;
-using Microsoft.EntityFrameworkCore;
-using Repositories;
-using Repositories.Contracts;
-using Repositories.Repos;
-using Services.Contracts;
-using Services.Managers;
-using StoreApp.Models;
+using StoreApp.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-
-var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<RepositoryContext>(options =>
-{
-    options.UseSqlite(connectionString,
-    b => b.MigrationsAssembly("StoreApp"));
-});
+builder.Services.ConfigureDbContext();
+builder.Services.ConfigureSession();
 
-builder.Services.AddDistributedMemoryCache();
-
-builder.Services.AddSession(options =>
-{
-    options.Cookie.Name = "StoreApp.Session";
-    options.IdleTimeout = TimeSpan.FromMinutes(20);
-});
-
-
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-
-builder.Services.AddScoped<IServiceManager, ServiceManager>();
-builder.Services.AddScoped<IProductService, ProductManager>();
-builder.Services.AddScoped<ICategoryService, CategoryManager>();
-builder.Services.AddScoped<IOrderService, OrderManager>();
-
-builder.Services.AddScoped<Cart>(c => SessionCart.GetCart(c));
+builder.Services.ConfigureRepoReg();
+builder.Services.ConfigureServiceReg();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -62,7 +30,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapRazorPages();
-
-
 
 app.Run();
