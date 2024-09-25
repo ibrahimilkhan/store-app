@@ -13,4 +13,6 @@ public class Product
     public string? Summary { get; set; } = string.Empty;
     public string? ImageUrl { get; set; }
 
+    public bool ShowCase {get;set;}
+
 }

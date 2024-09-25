@@ -139,6 +139,9 @@ namespace StoreApp.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("ShowCase")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Summary")
                         .HasColumnType("TEXT");
 
@@ -156,6 +159,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/images/1.jpg",
                             Name = "Razer BlackWidow V3 Mini",
                             Price = 3990m,
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -165,6 +169,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/images/2.jpg",
                             Name = "Logitech G305",
                             Price = 1399m,
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -174,6 +179,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/images/3.jpg",
                             Name = "BenQ Zowie XL2566K",
                             Price = 6900m,
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -183,6 +189,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/images/4.jpg",
                             Name = "Intel i7-13700k",
                             Price = 15699m,
+                            ShowCase = true,
                             Summary = ""
                         },
                         new
@@ -192,6 +199,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/images/5.jpg",
                             Name = "MSI GeForce RTX 4060 VENTUS",
                             Price = 13615m,
+                            ShowCase = true,
                             Summary = ""
                         },
                         new
@@ -201,6 +209,17 @@ namespace StoreApp.Migrations
                             ImageUrl = "/images/6.jpg",
                             Name = "Thinkpad X1 Carbon G11",
                             Price = 68790m,
+                            ShowCase = true,
+                            Summary = ""
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 5,
+                            ImageUrl = "/images/7.jpg",
+                            Name = "ThinkPad P16s Gen 2 (16, Intel)",
+                            Price = 68790m,
+                            ShowCase = true,
                             Summary = ""
                         });
                 });
