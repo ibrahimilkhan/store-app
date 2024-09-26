@@ -60,6 +60,12 @@ public class ProductManager : IProductService
         return productDto;
     }
 
+    public IEnumerable<Product> GetShowcaseProduct(bool trackChanges)
+    {
+        var showcaseProducts = _repositoryManager.ProductRepo.GetShowcaseProducts(trackChanges);
+        return showcaseProducts;
+    }
+
     public void UpdateOneProduct(ProductDtoForUpdate productDto)
     {
         if (productDto.ImageUrl == null)

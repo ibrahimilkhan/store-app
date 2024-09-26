@@ -31,6 +31,11 @@ public class ProductRepository : RepositoryBase<Product>, IProductRepository
         return FindByCondition(x => x.Id.Equals(id), trackChanges);
     }
 
+    public IQueryable<Product> GetShowcaseProducts(bool trackChanges)
+    {
+        return FindAll(trackChanges).Where(x => x.ShowCase.Equals(true));
+    }
+
     public void UpdateOneProduct(Product product)
     {
         Update(product);
