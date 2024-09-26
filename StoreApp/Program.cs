@@ -10,8 +10,10 @@ builder.Services.ConfigureSession();
 
 builder.Services.ConfigureRepoReg();
 builder.Services.ConfigureServiceReg();
+builder.Services.ConfigureRouting();
 
 builder.Services.AddAutoMapper(typeof(Program));
+
 
 var app = builder.Build();
 
