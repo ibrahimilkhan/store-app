@@ -12,4 +12,13 @@ public static class ProductRepositoryExtension
         else
             return products.Where(prd => prd.CategoryId.Equals(categoryId));
     }
+
+    public static IQueryable<Product> FilteredBySearchTerm(this IQueryable<Product> products, string? searchTerm)
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+            return products;
+        else
+            return products.Where(x => x.Name != null && x.Name.ToLower().Contains(searchTerm.ToLower()));
+
+    }
 }
