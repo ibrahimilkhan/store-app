@@ -1,12 +1,14 @@
 using System;
 using Entities.Dtos;
 using Entities.Models;
+using Entities.RequestParameters;
 
 namespace Services.Contracts;
 
 public interface IProductService
 {
     IEnumerable<Product> GetAllProducts(bool trackChanges);
+    IEnumerable<Product> GetAllProductsWithDetails(ProductRequestParameters p);
     IEnumerable<Product> GetShowcaseProduct(bool trackChanges);
     IEnumerable<ProductDtoForView> GetAllProductDtosForView(bool trackChanges);
     Product? GetProduct(int id, bool trackChanges);

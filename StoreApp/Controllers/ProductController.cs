@@ -1,3 +1,4 @@
+using Entities.RequestParameters;
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
 using Repositories.Contracts;
@@ -12,9 +13,9 @@ public class ProductController : Controller
         _serviceManager = serviceManager;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(ProductRequestParameters p)
     {
-        var model = _serviceManager.ProductService.GetAllProducts(false).ToList();
+        var model = _serviceManager.ProductService.GetAllProductsWithDetails(p).ToList();
         return View(model);
     }
 

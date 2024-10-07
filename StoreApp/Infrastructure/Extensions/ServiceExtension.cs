@@ -60,4 +60,4 @@ public static class ServiceExtension
             x.AppendTrailingSlash = false;
         });
     }
-}
+} 
